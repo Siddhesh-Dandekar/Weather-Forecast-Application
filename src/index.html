@@ -40,11 +40,12 @@
                 <!-- <img class="rounded-e-md bg-black h-10 px-2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEDklEQVR4nO1YW0gUYRSet4oub0G9BvUY9FSvhXYD2bJGDdM5Z2bSUCzsQlZ0gyiJqOx+UysqDXooclej+1NlpVJC0UUjH6KifKjdbVfhxBnX2X9mN/Pyz6awBw7M/jvMfN+c75zzn19R0pa2tA3L8vPzpyDiKkQ8h4jNAPAVAKIx/8priHhW07Q8XdcnK6PFCgoKZiFiNQAEEZEG43wvAJwHgJn/DbiqqhMA4CAA9AwWeBIiHJ0DmqaNTyl4AJgJAK8SQK2rIKOyjoyaFjLqO8i82W05X1trlXXWPUnIPC4qKpqeEvC6rs+JaToOYMMuMmpbyfSHBuXGpXbSN+91R6OrsLBwdiq+fBy8YZJx9DaZDcFBg7e9IUjG0SbrGSIJTdOmeQKedQoAbTb44lIyLrQNHbjbL7SRXlwqRuM555d0Apyw4pfnFycDtO1BmM60ROj66x4KvO9zvua17Q/DySV18SWhsUaMxB7ppVKsNpZsXCDK74bo8qso3enoGdCvtEep/E4SElWNIoGfUqXEdb7/4frG3Qmar7gfpsD7PvC33kbp8NPftOlemNYGQpbzNa/xf3yP/12UKh64otEQJH3DLpHESWkdVmxSbumUNIWp8UPf161ujVi//6Z3/q+6LWLdy4SLAq4o1LaIufBLSseObQ9idX5rAigGcellhI49i5DpApTUAyE6/jxCV9sTCZj+kKNPAECuDALnbPlU1o286vzD9f1XRAJnZBBotpO3psVzAkbNC0eHHjEBAPhmE7j20XMCZn2nSOCLjAhE7ATmvY3XBG52ixL6LZnAD+8J3Pgul4BDQvWd3udAfYd0CcWTuNb7JDZlJzGPgTaBFJdRRDw9YgI8w9p9oGyL9wTWORqZOmICJSUlk7itx2XU6p3+a51bCX63IsN4ALejUL6DTP8wBph/uWszh4hnpYAXJrFofDvdJF86VQERPJfuGdIIxEgccIySEqWUZKDZr3gxUnJZs6VUXPrXqWxoum91jJQA8K6srGycdAIxEtMQ8ZMjElWNwxvq/cE+2eiG+4ilFxELFa+Mjz749MDx0vXbyDjfPKRqo5fvHOjQq9dTEog4FQAeuV/MfYIbEW+JxYMtk69rXlj/8T1JTujeiEUCrTXs9al5cod70VinfHog9ohhOFebfbFnZfeTAEDK9Kk0b5GPlq7IOaJ4aZwXPIAPkcgvnrbcpRIAsjUNogx+7iKf5SkhwcZdk2dY3r8AwBPeSca+MPsXXgOAU4iYM1CHXbI8Zw+D7idgkVi8jJZk5x5Sxopl+FYeTyBhRSL3sDJWLCNNYpRYRjoSo8QyfepJd2IvyFrxSRlLliHIaX5W9mdVlTTwpNIWLlNPLMha2ZWZuXri/8aStrQpo9D+AKMobrmj90reAAAAAElFTkSuQmCC"> -->
 
 
-                <button class="crr-location min-w-36 bg-slate-700 p-2 rounded-md text-cyan-100">Current Location</button>
+                <button id="crr-location" class="min-w-36 bg-slate-700 p-2 rounded-md text-cyan-100">Current
+                    Location</button>
             </div>
             <div class="weather-info w-full p-5 flex flex-col md:flex-row gap-5 ">
                 <div
-                    class="bg-slate-700 h-52 flex md:min-w-80 gap-5 justify-between rounded-lg p-5 bg-opacity-50 shadow-2xl">
+                    class="bg-slate-700 h-52 flex md:min-w-80 gap-2 justify-between rounded-lg p-5 bg-opacity-50 shadow-2xl">
                     <div class="flex flex-col min-w-fit justify-between">
                         <span class="new-amsterdam-regular text-2xl">TEMPERATURE</span>
                         <div><span id="degreedata" class="text-6xl new-amsterdam-regular">30°C</span>
@@ -54,8 +55,8 @@
                         <h1 id="citydata" class="new-amsterdam-regular text-xl">Thane</h1>
                     </div>
                     <div>
-                        <img class="h-full"
-                            src="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v10/Condition_Card/Haze.svg"
+                        <img id="latesticon" class="h-full"
+                            src="img/03d.png"
                             alt="">
                     </div>
                 </div>
@@ -66,12 +67,65 @@
                         <img class="mix-blend-color-burn" width="50" height="50" src="wind-power.gif" alt="">
                     </div>
                     <div class="flex flex-col items-center justify-evenly">
-                        <span  class="new-amsterdam-regular text-3xl">HUMIDITY</span>
+                        <span class="new-amsterdam-regular text-3xl">HUMIDITY</span>
                         <h1 id="humiditydata" class="new-amsterdam-regular text-5xl">80%</h1>
                         <img class="mix-blend-color-burn" width="50" height="50" src="humidity.gif" alt="">
                     </div>
                 </div>
 
+            </div>
+            <div id="forecast" class=" w-full p-5 flex flex-wrap justify-between">
+                <div
+                    class="main-child bg-slate-700 h-52  flex-1 min-w-52 flex-col justify-between rounded-lg p-5 m-3 bg-opacity-50 shadow-2xl">
+                    <h1 class="new-amsterdam-regular text-3xl">Day 1</h1>
+                    <img width="50" height="50"
+                        src="img/01d.png"
+                        alt="">
+                    <h2 class="new-amsterdam-regular text-xl">Temperature: 27°C</h2>
+                    <h3 class="new-amsterdam-regular text-xl">Humidity: 78%</h3>
+                    <h4 class="new-amsterdam-regular text-xl">Wind: 4 km/h</h4>
+                </div>
+                
+                <div
+                    class="main-child bg-slate-700 h-52  flex-1 min-w-52 flex flex-col justify-between rounded-lg p-5 m-3 bg-opacity-50 shadow-2xl">
+                    <h1 class="new-amsterdam-regular text-3xl">Day 2</h1>
+                    <img width="50" height="50"
+                        src="img/13d.png"
+                        alt="">
+                    <h2 class="new-amsterdam-regular text-xl">Temperature: 27°C</h2>
+                    <h3 class="new-amsterdam-regular text-xl">Humidity: 78%</h3>
+                    <h4 class="new-amsterdam-regular text-xl">Wind: 4 kmp/h</h4>
+                </div>
+                <div
+                    class="main-child bg-slate-700 h-52  flex-1 min-w-52 flex flex-col justify-between rounded-lg p-5 m-3 bg-opacity-50 shadow-2xl">
+                    <h1 class="new-amsterdam-regular text-3xl">Day 3</h1>
+                    <img width="50" height="50"
+                        src="img/13d.png"
+                        alt="">
+                    <h2 class="new-amsterdam-regular text-xl">Temperature: 27°C</h2>
+                    <h3 class="new-amsterdam-regular text-xl">Humidity: 78%</h3>
+                    <h4 class="new-amsterdam-regular text-xl">Wind: 4 kmp/h</h4>
+                </div>
+                <div
+                    class="main-child bg-slate-700 h-52  flex-1 min-w-52 flex flex-col justify-between rounded-lg p-5 m-3 bg-opacity-50 shadow-2xl">
+                    <h1 class="new-amsterdam-regular text-3xl">Day 4</h1>
+                    <img width="50" height="50"
+                        src="img/13d.png"
+                        alt="">
+                    <h2 class="new-amsterdam-regular text-xl">Temperature: 27°C</h2>
+                    <h3 class="new-amsterdam-regular text-xl">Humidity: 78%</h3>
+                    <h4 class="new-amsterdam-regular text-xl">Wind: 4 kmp/h</h4>
+                </div>
+                <div
+                    class="main-child bg-slate-700 h-52  flex-1 min-w-52 flex flex-col justify-between rounded-lg p-5 m-3 bg-opacity-50 shadow-2xl">
+                    <h1 class="new-amsterdam-regular text-3xl">Day 5</h1>
+                    <img width="50" height="50"
+                        src="img/13d.png"
+                        alt="">
+                    <h2 class="new-amsterdam-regular text-xl">Temperature: 27°C</h2>
+                    <h3 class="new-amsterdam-regular text-xl">Humidity: 78%</h3>
+                    <h4 class="new-amsterdam-regular text-xl">Wind: 4 kmp/h</h4>
+                </div>
             </div>
 
         </section>
@@ -93,52 +147,143 @@
     </footer>
 
     <script>
-
-        var cityname = document.getElementById("cityname");
+        var cordstatus;
+        var cityname = 'Indian';
+        const inputname = document.getElementById("cityname");
         const humiditydata = document.querySelector('#humiditydata');
         const winddata = document.querySelector('#winddata');
         const degreedata = document.querySelector('#degreedata');
         const citydata = document.querySelector('#citydata')
         const atmosphere = document.querySelector('#atmosphere');
+        const locationfetch = document.querySelector('#crr-location');
+        const maindiv = document.querySelector('#forecast');
+        const icon = document.querySelector('#latesticon');
 
-        cityname.addEventListener("keydown", function(event) {
+
+
+        locationfetch.addEventListener('click', fetchcord);
+
+        function fetchcord() {
+            const options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0,
+            };
+
+            function success(pos) {
+                const crd = pos.coords;
+                cordstatus = true;
+                weather(crd);
+            }
+
+            function error(err) {
+                console.warn(`ERROR(${err.code}): ${err.message}`);
+            }
+            navigator.geolocation.getCurrentPosition(success, error, options);
+        }
+
+        inputname.addEventListener("keydown", function (event) {
             if (event.key === "Enter") {
-                if(cityname.value === ''){
+                if (inputname.value === '' || inputname.value.toUpperCase() === cityname.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) {
+                    console.log('erro');
                     return;
                 }
-                else{
-                    weather(cityname.value);
+                else {
+                    cordstatus = false;
+                    weather(inputname.value);
                 }
             }
         });
 
-        async function weather(city){
-            try{
-                const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=505cddd06774fd697b9822f84de36a04`);
-                const data = await result.json();
-                console.log(data);
-                displaydata(data);
+        async function weather(city) {
+
+            if (cordstatus) {
+                try {
+                    const longi = city.longitude;
+                    const lati = city.latitude;
+                    const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${longi}&appid=505cddd06774fd697b9822f84de36a04&lang=en`);
+                    const data = await result.json();
+                    console.log(data);
+                    displaydata(data);
+                }
+                catch (error) {
+                    console.log(error);
+                }
+
             }
-            catch(err){
+            else {
+                try {
+                    const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=505cddd06774fd697b9822f84de36a04`);
+                    const data = await result.json();
+                    console.log(data);
+                    displaydata(data);
+                }
+                catch (err) {
+                    console.log(err);
+                }
+            }
+
+        }
+
+        function displaydata(para) {
+            const temperature = Math.floor(para.main.temp - 273.15);
+            const humidity = para.main.humidity;
+            const windspeed = Math.floor(para.wind.speed);
+            const locationname = para.name;
+            cityname = locationname;
+            const obj1 = para.weather[0];
+            const timestamp = para.dt;
+            const date = new Date(timestamp * 1000);
+            const readableDate = date.toUTCString().split(' ');
+
+            
+
+            atmosphere.innerHTML = obj1.main;
+            winddata.innerHTML = windspeed + ' KM/H';
+            humiditydata.innerHTML = humidity + '%';
+            degreedata.innerHTML = temperature + '°C';
+            icon.src = `img/${obj1.icon}.png`
+            citydata.innerHTML = locationname +' '+ readableDate[0] + readableDate[1];
+            dailyforecast(locationname);
+        }
+
+        async function dailyforecast(forecastname) {
+            try {
+                const forecastdata = await fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=${forecastname}&cnt=5&appid=505cddd06774fd697b9822f84de36a04`);
+                const forecastresult = await forecastdata.json();
+                const forecastlist = forecastresult.list;
+                document.querySelectorAll('.main-child').forEach(e => e.remove());
+
+    
+                forecastlist.map((x) => {
+
+                    const timestamp = x.dt;
+                    const date = new Date(timestamp * 1000);
+                    const readableDate = date.toUTCString().split(' ');
+                    console.log(readableDate);                    
+
+                    const forecastdiv = document.createElement('div');
+                    forecastdiv.classList.add('main-child','bg-slate-700', 'h-52' , 'flex-1','flex', 'min-w-52',  'flex-col', 'justify-between', 'rounded-lg' ,'p-5', 'm-3' ,'bg-opacity-50' ,'shadow-2xl');
+
+                    forecastdiv.innerHTML = `<h1 class="new-amsterdam-regular text-3xl">DAY - ${readableDate[0] +" " + readableDate[1]}</h1>
+                    <img width="50" height="50"
+                        src="img/${x.weather[0].icon}.png"
+                        alt="">
+                    <h2 class="new-amsterdam-regular text-xl">Temperature: ${Math.floor((x.temp.day) - 273.15)}°C</h2>
+                    <h3 class="new-amsterdam-regular text-xl">Humidity: ${x.humidity}%</h3>
+                    <h4 class="new-amsterdam-regular text-xl">Wind: ${Math.floor(x.speed)} km/h</h4>`;
+                maindiv.appendChild(forecastdiv);
+                });
+                
+                console.log(forecastlist);
+
+            }
+            catch (err) {
                 console.log(err);
             }
         }
 
-        function displaydata(para){
-            const temperature = Math.floor(para.main.temp - 273.15); 
-            const humidity = para.main.humidity;
-            const windspeed = Math.floor(para.wind.speed);
-            const locationname = para.name;
-            const obj1 = para.weather[0];
-            
-            atmosphere.innerHTML = obj1.main ;
-            winddata.innerHTML = windspeed + ' KM/H';
-            humiditydata.innerHTML = humidity + '%';
-            degreedata.innerHTML = temperature + '°C';
-            citydata.innerHTML = locationname;
-        }
 
-        
 
     </script>
 
