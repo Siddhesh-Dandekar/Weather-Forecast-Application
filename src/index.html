@@ -32,6 +32,7 @@
     <main class="w-full flex justify-center">
         <section id="main-section"
             class=" my-3 bg-slate-800 w-11/12 min-h-screen bg-cover rounded-3xl overflow-hidden flex flex-col">
+            <!--SEARCH BAR AND CURRENT LOCATION SECTION-->
             <div class="search-section w-full p-5 flex justify-between gap-3">
 
                 <input class="w-3/5 sm:w-svw h-10 rounded-md p-2 bg-slate-700 text-white" type="text" name="cityname"
@@ -43,6 +44,8 @@
                 <button id="crr-location" class="min-w-36 bg-slate-700 p-2 rounded-md text-cyan-100">Current
                     Location</button>
             </div>
+
+            <!--WEATHER INFO-->
             <div class="weather-info w-full p-5 flex flex-col md:flex-row gap-5 ">
                 <div
                     class="bg-slate-700 h-52 flex md:min-w-80 gap-2 justify-between rounded-lg p-5 bg-opacity-50 shadow-2xl">
@@ -72,6 +75,8 @@
                 </div>
 
             </div>
+
+            <!--5 DAYS FORECAST-->
             <div id="forecast" class=" w-full p-5 flex flex-wrap justify-between">
                 <div
                     class="main-child bg-slate-700 h-52  flex-1 min-w-52 flex-col justify-between rounded-lg p-5 m-3 bg-opacity-50 shadow-2xl">
@@ -115,11 +120,15 @@
                     <h4 class="new-amsterdam-regular text-xl">Wind: 4 kmp/h</h4>
                 </div>
             </div>
+
+            <!--RECENT SEARCH ITEMS-->
             <div class="w-full px-5 flex flex-wrap justify-between">
                 <div
                     class="bg-slate-700 flex flex-1 justify-center text-3xl new-amsterdam-regular rounded-lg p-2 bg-opacity-50 shadow-2xl">
                     RECENT SEARCH</div>
             </div>
+
+            <!--DISPLAYING RECENT SEARCH ITEM-->
             <div id="recentmaindiv" class="w-full p-5 flex flex-wrap justify-between">
                 <!-- <div class="bg-slate-700 flex flex-1 justify-center rounded-sm m-1 p-1 bg-opacity-50 shadow-2xl">
                     <span class="text-xl new-amsterdam-regular">Thane</span>
@@ -158,6 +167,8 @@
     </footer>
 
     <script>
+
+        //NECESSARY VARIABLES 
         var cordstatus;
         var prevlati;
         var prevlongi;
@@ -172,8 +183,9 @@
         const maindiv = document.querySelector('#forecast');
         const icon = document.querySelector('#latesticon');
 
-        locationfetch.addEventListener('click', fetchcord);
+        locationfetch.addEventListener('click', fetchcord);//Current Location 
 
+        //This function Fetch current location cordinates and pass it to Weather(city)
         function fetchcord() {
             const options = {
                 enableHighAccuracy: true,
@@ -194,8 +206,10 @@
             navigator.geolocation.getCurrentPosition(success, error, options);
         }
 
+        //This will take input from user when he pressed enter
         inputname.addEventListener("keydown", function (event) {
             if (event.key === "Enter") {
+                //this condition checks if input is empty OR Same city Name so to avoid Multiple API Requests
                 if (inputname.value === '' || inputname.value.toUpperCase() === cityname.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) {
                     console.log('Same City Name');
                     return;
@@ -207,8 +221,9 @@
             }
         });
 
+        //Asynchronous Function which takes CityName OR Cordinates(current Location Situation)
         async function weather(city) {
-            if (cordstatus) {
+            if (cordstatus) {//if we are fetching data using current location then this will be TRUE
                 try {
                     const longi = city.longitude;
                     const lati = city.latitude;
@@ -229,6 +244,7 @@
                 }
 
             }
+            //To Fetch Data Using CityName
             else {
                 try {
                     const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=505cddd06774fd697b9822f84de36a04`);
@@ -251,6 +267,7 @@
 
         }
 
+        //The Data which we receive from Weather Function will be using that JSON Response and display those parameters
         function displaydata(para) {
             const temperature = Math.floor(para.main.temp - 273.15);
             const humidity = para.main.humidity;
@@ -276,6 +293,7 @@
             dailyforecast(locationname);
         }
 
+        //Now This will Take Cityname and Add that to SessionStorage
         function recentsearch(data) {
             // const recentarr = sessionStorage.getItem('CityName').split(',');
             // recentarr.unshift(data);
@@ -300,6 +318,7 @@
 
         }
 
+        //THis will Fetch the item stored in SessionStorage and display them
         function recentitem() {
             const storedcities = sessionStorage.getItem('CityName');
             const recentsearchname = storedcities ? storedcities.split(',') : [];
@@ -325,6 +344,7 @@
             })
         }
 
+        //We will fetch 5 days forecast and display them using this function
         async function dailyforecast(forecastname) {
             try {
                 const forecastdata = await fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=${forecastname}&cnt=5&appid=505cddd06774fd697b9822f84de36a04`);
@@ -360,6 +380,7 @@
             }
         }
 
+        // Every time we reload our webpage this is fetch recentcities from SessionStorage and display them
         recentitem();
     </script>
 
