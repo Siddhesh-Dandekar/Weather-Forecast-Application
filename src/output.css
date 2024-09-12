@@ -554,6 +554,10 @@ video {
   --tw-contain-style:  ;
 }
 
+.relative {
+  position: relative;
+}
+
 .m-1 {
   margin: 0.25rem;
 }
@@ -567,12 +571,20 @@ video {
   margin-bottom: 0.75rem;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .flex {
   display: flex;
 }
 
 .grid {
   display: grid;
+}
+
+.hidden {
+  display: none;
 }
 
 .h-10 {
@@ -618,6 +630,10 @@ video {
 
 .flex-1 {
   flex: 1 1 0%;
+}
+
+.cursor-default {
+  cursor: default;
 }
 
 .grid-cols-2 {
@@ -809,7 +825,7 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-#main-body{
+#main-body {
   background-color: #0e0e0e;
 }
 
@@ -855,8 +871,36 @@ video {
   background-image: url('https://images.unsplash.com/photo-1687851898832-650714860119?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 }
 
-#recentmaindiv button:hover{
+#recentmaindiv button:hover {
   background-color: aliceblue;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 7px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color:black;
 }
 
 @media (min-width: 640px) {

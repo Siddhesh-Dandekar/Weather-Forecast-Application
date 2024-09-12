@@ -33,16 +33,25 @@
         <section id="main-section"
             class=" my-3 bg-slate-800 w-11/12 min-h-screen bg-cover rounded-3xl overflow-hidden flex flex-col">
             <!--SEARCH BAR AND CURRENT LOCATION SECTION-->
-            <div class="search-section w-full p-5 flex justify-between gap-3">
+            <div class="search-section w-full p-5 flex flex-wrap justify-between gap-3">
 
-                <input class="w-3/5 sm:w-svw h-10 rounded-md p-2 bg-slate-700 text-white" type="text" name="cityname"
-                    id="cityname" placeholder="Search">
+                <input class="w-3/5 sm:w-svw h-10 rounded-md p-2 bg-slate-700 flex text-white" type="text"
+                    name="cityname" id="cityname" placeholder="Search" style="flex: 1 1 60%;">
 
                 <!-- <img class="rounded-e-md bg-black h-10 px-2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEDklEQVR4nO1YW0gUYRSet4oub0G9BvUY9FSvhXYD2bJGDdM5Z2bSUCzsQlZ0gyiJqOx+UysqDXooclej+1NlpVJC0UUjH6KifKjdbVfhxBnX2X9mN/Pyz6awBw7M/jvMfN+c75zzn19R0pa2tA3L8vPzpyDiKkQ8h4jNAPAVAKIx/8priHhW07Q8XdcnK6PFCgoKZiFiNQAEEZEG43wvAJwHgJn/DbiqqhMA4CAA9AwWeBIiHJ0DmqaNTyl4AJgJAK8SQK2rIKOyjoyaFjLqO8i82W05X1trlXXWPUnIPC4qKpqeEvC6rs+JaToOYMMuMmpbyfSHBuXGpXbSN+91R6OrsLBwdiq+fBy8YZJx9DaZDcFBg7e9IUjG0SbrGSIJTdOmeQKedQoAbTb44lIyLrQNHbjbL7SRXlwqRuM555d0Apyw4pfnFycDtO1BmM60ROj66x4KvO9zvua17Q/DySV18SWhsUaMxB7ppVKsNpZsXCDK74bo8qso3enoGdCvtEep/E4SElWNIoGfUqXEdb7/4frG3Qmar7gfpsD7PvC33kbp8NPftOlemNYGQpbzNa/xf3yP/12UKh64otEQJH3DLpHESWkdVmxSbumUNIWp8UPf161ujVi//6Z3/q+6LWLdy4SLAq4o1LaIufBLSseObQ9idX5rAigGcellhI49i5DpApTUAyE6/jxCV9sTCZj+kKNPAECuDALnbPlU1o286vzD9f1XRAJnZBBotpO3psVzAkbNC0eHHjEBAPhmE7j20XMCZn2nSOCLjAhE7ATmvY3XBG52ixL6LZnAD+8J3Pgul4BDQvWd3udAfYd0CcWTuNb7JDZlJzGPgTaBFJdRRDw9YgI8w9p9oGyL9wTWORqZOmICJSUlk7itx2XU6p3+a51bCX63IsN4ALejUL6DTP8wBph/uWszh4hnpYAXJrFofDvdJF86VQERPJfuGdIIxEgccIySEqWUZKDZr3gxUnJZs6VUXPrXqWxoum91jJQA8K6srGycdAIxEtMQ8ZMjElWNwxvq/cE+2eiG+4ilFxELFa+Mjz749MDx0vXbyDjfPKRqo5fvHOjQq9dTEog4FQAeuV/MfYIbEW+JxYMtk69rXlj/8T1JTujeiEUCrTXs9al5cod70VinfHog9ohhOFebfbFnZfeTAEDK9Kk0b5GPlq7IOaJ4aZwXPIAPkcgvnrbcpRIAsjUNogx+7iKf5SkhwcZdk2dY3r8AwBPeSca+MPsXXgOAU4iYM1CHXbI8Zw+D7idgkVi8jJZk5x5Sxopl+FYeTyBhRSL3sDJWLCNNYpRYRjoSo8QyfepJd2IvyFrxSRlLliHIaX5W9mdVlTTwpNIWLlNPLMha2ZWZuXri/8aStrQpo9D+AKMobrmj90reAAAAAElFTkSuQmCC"> -->
 
 
-                <button id="crr-location" class="min-w-36 bg-slate-700 p-2 rounded-md text-cyan-100">Current
+                <button id="crr-location"
+                    class="min-w-36 bg-slate-700 p-2 flex justify-center flex-1 rounded-md text-cyan-100">Current
                     Location</button>
+
+                <!--RECENT ITEM WILL SHOW HERE-->
+                <div class="dropdown relative inline-block text-cyan-100">
+                    <button class="min-w-36 p-2 dropbtn bg-slate-700 w-full rounded-md h-full">Recent Search</button>
+                    <div class="dropdown-content">
+                      
+                    </div>
+                </div>
             </div>
 
             <!--WEATHER INFO-->
@@ -121,32 +130,18 @@
                 </div>
             </div>
 
-            <!--RECENT SEARCH ITEMS-->
-            <div class="w-full px-5 flex flex-wrap justify-between">
+            <!-- RECENT SEARCH ITEMS -->
+            <!-- <div class="w-full px-5 flex flex-wrap justify-between">
                 <div
                     class="bg-slate-700 flex flex-1 justify-center text-3xl new-amsterdam-regular rounded-lg p-2 bg-opacity-50 shadow-2xl">
                     RECENT SEARCH</div>
-            </div>
+            </div> -->
 
-            <!--DISPLAYING RECENT SEARCH ITEM-->
-            <div id="recentmaindiv" class="w-full p-5 flex flex-wrap justify-between">
-                <!-- <div class="bg-slate-700 flex flex-1 justify-center rounded-sm m-1 p-1 bg-opacity-50 shadow-2xl">
-                    <span class="text-xl new-amsterdam-regular">Thane</span>
-                </div>
-                <div class="bg-slate-700 flex flex-1 justify-center rounded-sm m-1 p-1 bg-opacity-50 shadow-2xl">
-                    <span class="text-xl new-amsterdam-regular">Thane</span>
-                </div>
-                <div class="bg-slate-700 flex flex-1 justify-center rounded-sm m-1 p-1 bg-opacity-50 shadow-2xl">
-                    <span class="text-xl new-amsterdam-regular">Thane</span>
-                </div>
-                <div class="bg-slate-700 flex flex-1 justify-center rounded-sm m-1 p-1 bg-opacity-50 shadow-2xl">
-                    <span class="text-xl new-amsterdam-regular">Thane</span>
-                </div>
-                <div class="bg-slate-700 flex flex-1 justify-center rounded-sm m-1 p-1 bg-opacity-50 shadow-2xl">
-                    <span class="text-xl new-amsterdam-regular">Thane</span>
-                </div> -->
+            <!-- DISPLAYING RECENT SEARCH ITEM -->
+            <!-- <div id="recentmaindiv" class="w-full p-5 flex flex-wrap justify-between">
 
-            </div>
+
+            </div> -->
 
         </section>
     </main>
@@ -320,13 +315,22 @@
 
         //THis will Fetch the item stored in SessionStorage and display them
         function recentitem() {
+            const drpbtn = document.querySelector('.dropdown')
             const storedcities = sessionStorage.getItem('CityName');
             const recentsearchname = storedcities ? storedcities.split(',') : [];
-            const recentmaindiv = document.querySelector('#recentmaindiv');
+            if(storedcities){
+                const recentsearch = storedcities.split(',');
+                drpbtn.classList.remove('hidden');
+            }
+            else{
+                const recentsearch = [];
+                drpbtn.classList.add('hidden');
+            }
+            const dropdowncontent = document.querySelector('.dropdown-content');
 
             document.querySelectorAll('.recent-content').forEach((x) => x.remove());
             recentsearchname.map((x) => {
-                const recentdiv = document.createElement('button');
+                const recentdiv = document.createElement('a');
                 recentdiv.onclick = () => {
                     if (recentdiv.innerText === cityname) {
                         console.log('Same City Name');
@@ -338,8 +342,8 @@
                     }
                 }
                 recentdiv.classList.add('recent-content', 'bg-slate-700', 'flex', 'flex-1', 'justify-center', 'rounded-sm', 'm-1', 'p-1', 'bg-opacity-50', 'shadow-2xl');
-                recentdiv.innerHTML = `<span class="text-xl new-amsterdam-regular">${x}</span>`;
-                recentmaindiv.appendChild(recentdiv);
+                recentdiv.innerHTML = `<span class="text-xl new-amsterdam-regular cursor-default">${x}</span>`;
+                dropdowncontent.appendChild(recentdiv);
 
             })
         }
